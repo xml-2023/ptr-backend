@@ -26,6 +26,7 @@ public class FlightDTO {
     private Integer planeCapacity;
     private Integer numberOfPassengers = 0;
     private ArrayList<Ticket> tickets = new ArrayList<>();
+    private double ticketPriceInEuros;
 
     public Flight map(FlightDTO dto){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");

@@ -20,7 +20,7 @@ public class FlightController {
     @PostMapping
     public Response create(@RequestBody FlightDTO dto) {
         Flight flight = dto.map(dto);
-        return createFlightUseCase.create(flight);
+        return createFlightUseCase.create(flight, dto.getTicketPriceInEuros());
     }
 
 //    @DeleteMapping

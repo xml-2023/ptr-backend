@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
@@ -27,5 +28,6 @@ public class FlightEntity {
     private String placeOfArrival;
     private Integer numberOfPassengers;
     private Integer planeCapacity;
+    @DBRef
     private ArrayList<Ticket> tickets;
 }

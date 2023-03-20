@@ -1,8 +1,10 @@
 package com.kncm.flight.createflight;
 
+import com.kncm.constant.TestConstant;
 import com.kncm.flight.FlightBuilder;
 import com.kncm.model.Flight;
 import com.kncm.store.FlightStore;
+import com.kncm.store.TicketStore;
 import com.kncm.usecase.flight.CreateFlightUseCase;
 import com.kncm.validator.ValidationReport;
 import com.kncm.validator.flight.CreateFlightValidator;
@@ -24,7 +26,9 @@ public class CreateFlightUseCaseTest {
     @Mock
     CreateFlightValidator validator;
     @Mock
-    FlightStore store;
+    FlightStore flightStore;
+    @Mock
+    TicketStore ticketStore;
     private CreateFlightUseCase useCase;
     private FlightBuilder flightBuilder;
 
@@ -32,19 +36,19 @@ public class CreateFlightUseCaseTest {
     void setUp() {
         flightBuilder = new FlightBuilder();
         flight = flightBuilder.initializeFlight();
-        useCase = new CreateFlightUseCase(store, validator);
+        useCase = new CreateFlightUseCase(flightStore, ticketStore, validator);
     }
 
     @Test
     void create_FlightIsValid_True() {
-        when(store.save(flight))
+        when(flightStore.save(flight))
                 .thenReturn(flight);
         when(validator.validate(flight))
                 .thenReturn(validReport);
 
-        useCase.create(flight);
+        useCase.create(flight, TestConstant.TEST_TICKET_PRICE);
 
-        verify(store, times(1)).save(flight);
+        verify(flightStore, times(1)).save(flight);
     }
 
     @Test
@@ -52,8 +56,8 @@ public class CreateFlightUseCaseTest {
         when(validator.validate(flight))
                 .thenReturn(invalidReport);
 
-        useCase.create(flight);
+        useCase.create(flight, TestConstant.TEST_TICKET_PRICE);
 
-        verify(store, times(0)).save(flight);
+        verify(flightStore, times(0)).save(flight);
     }
 }

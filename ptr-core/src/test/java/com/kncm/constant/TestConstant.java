@@ -10,4 +10,5 @@ public final class TestConstant {
     public static final LocalTime TEST_TIME_DEPARTURE = LocalTime.now();
     public static final Integer TEST_PLANE_CAPACITY = 50;
     public static final Integer TEST_NUMBER_PASSENGERS = 35;
+    public static final double TEST_TICKET_PRICE = 50;
 }
