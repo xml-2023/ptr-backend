@@ -17,6 +17,7 @@ public class CreateFlightUseCase {
     public Response create(Flight flight){
         ValidationReport report = validator.validate(flight);
         Flight createdFlight = new Flight();
+        //create ticket list
         createdFlight.setTickets(new ArrayList<>());
         createdFlight.setNumberOfPassengers(0);
         if (report.isValid()) {

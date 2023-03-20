@@ -7,7 +7,5 @@ public interface FlightStore {
 
     Flight find(Long id);
 
-    boolean exists(String email);
-
     void delete(Flight flight);
 }

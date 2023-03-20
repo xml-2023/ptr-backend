@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -40,7 +40,7 @@ public class CreateFlightValidatorTest {
 
     @Test
     void validate_DateIsInPast_False() {
-        flight.setDate(LocalDateTime.now().minusDays(2));
+        flight.setDate(LocalDate.now().minusDays(2));
 
         ValidationReport report = validator.validate(flight);
 

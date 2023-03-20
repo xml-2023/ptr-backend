@@ -7,7 +7,7 @@ import com.kncm.validator.ValidationReport;
 import com.kncm.validator.Validator;
 import lombok.AllArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.HashMap;
 
 @AllArgsConstructor
@@ -22,7 +22,7 @@ public class CreateFlightValidator implements Validator<Flight> {
             if (flight.getDate() == null) {
                 report.setValid(false);
                 report.addMessage(FlightConstant.DATE, "date is null");
-            } else if (flight.getDate().isBefore(LocalDateTime.now())) {
+            } else if (flight.getDate().isBefore(LocalDate.now())) {
                 report.setValid(false);
                 report.addMessage(FlightConstant.INVALID_DATE, "date is in past");
             }
