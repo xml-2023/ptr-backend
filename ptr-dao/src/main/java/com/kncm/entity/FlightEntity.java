@@ -28,6 +28,5 @@ public class FlightEntity {
     private String placeOfArrival;
     private Integer numberOfPassengers;
     private Integer planeCapacity;
-    @DBRef
     private ArrayList<Ticket> tickets;
 }

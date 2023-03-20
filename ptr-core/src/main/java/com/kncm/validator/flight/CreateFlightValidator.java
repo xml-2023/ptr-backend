@@ -9,12 +9,16 @@ import lombok.AllArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.regex.Pattern;
 
 @AllArgsConstructor
 public class CreateFlightValidator implements Validator<Flight> {
     @Override
     public ValidationReport validate(Flight flight) {
         ValidationReport report = new ValidationReport(true, new HashMap<>());
+        Pattern datePattern = Pattern.compile(
+                "^\\d{4}-\\d{2}-\\d{2}$");
+
         if (flight == null) {
             report.setValid(false);
             report.addMessage(FlightConstant.FLIGHT, "flight is null");
@@ -25,6 +29,9 @@ public class CreateFlightValidator implements Validator<Flight> {
             } else if (flight.getDate().isBefore(LocalDate.now())) {
                 report.setValid(false);
                 report.addMessage(FlightConstant.INVALID_DATE, "date is in past");
+            } else if (!datePattern.matcher(flight.getDate().toString()).matches()) {
+                report.setValid(false);
+                report.addMessage(FlightConstant.INVALID_DATE, "date is in invalid format");
             }
             if (flight.getTimeOfDeparture() == null) {
                 report.setValid(false);

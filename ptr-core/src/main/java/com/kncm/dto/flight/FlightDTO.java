@@ -32,9 +32,9 @@ public class FlightDTO {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         Flight flight = new Flight();
         flight.setId(dto.getId());
-        flight.setDate(LocalDate.parse(dto.getDate()).plusDays(1));
-        flight.setTimeOfArrival(LocalTime.parse(dto.getTimeOfArrival()).plusHours(1));
-        flight.setTimeOfDeparture(LocalTime.parse(dto.getTimeOfDeparture()).plusHours(1));
+        flight.setDate(LocalDate.parse(dto.getDate()));
+        flight.setTimeOfArrival(LocalTime.parse(dto.getTimeOfArrival()));
+        flight.setTimeOfDeparture(LocalTime.parse(dto.getTimeOfDeparture()));
         flight.setPlaceOfArrival(dto.getPlaceOfArrival());
         flight.setPlaceOfDeparture(dto.getPlaceOfDeparture());
         flight.setPlaneCapacity(dto.getPlaneCapacity());

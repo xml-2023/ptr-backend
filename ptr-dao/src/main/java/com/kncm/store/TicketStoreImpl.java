@@ -17,5 +17,5 @@ public class TicketStoreImpl implements TicketStore{
     public Ticket find(Long id) { return converter.toModel(repository.findOne(id)); }
 
     @Override
-    public void delete(Ticket ticket) { repository.delete(converter.toEntity(ticket)); }
+    public void delete(Ticket ticket) { repository.deleteById(ticket.getId()); }
 }
