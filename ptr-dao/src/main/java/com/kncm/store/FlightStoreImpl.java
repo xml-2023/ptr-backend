@@ -17,5 +17,10 @@ public class FlightStoreImpl implements FlightStore{
     public Flight find(Long id) { return converter.toModel(repository.findOne(id)); }
 
     @Override
+    public boolean exists(Long id) {
+        return repository.existsById(id);
+    }
+
+    @Override
     public void delete(Flight flight) { repository.delete(converter.toEntity(flight)); }
 }

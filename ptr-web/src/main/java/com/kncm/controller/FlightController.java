@@ -32,12 +32,11 @@ public class FlightController {
     }
 
     @GetMapping(value = "/findBy/{id}")
-    public Flight findOne(@PathVariable("id") Long id){
+    public Response findOne(@PathVariable("id") Long id){
         return findFlightUseCase.findFlight(id);
     }
     @DeleteMapping(value = "/{id}")
-    public void delete(@PathVariable("id") Long id){
-        Flight flight = flightStore.find(id);
-        deleteFlightUseCase.delete(flight);
+    public Response delete(@PathVariable("id") Long id){
+        return deleteFlightUseCase.delete(id);
     }
 }
