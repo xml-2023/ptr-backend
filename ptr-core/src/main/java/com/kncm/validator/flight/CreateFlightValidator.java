@@ -43,11 +43,11 @@ public class CreateFlightValidator implements Validator<Flight> {
                 report.setValid(false);
                 report.addMessage(FlightConstant.INVALID_TIME, "time of arrival is before time of departure");
             }
-            if (flight.getPlaceOfDeparture().isBlank()) {
+            if (flight.getPlaceOfDeparture().isBlank() || flight.getPlaceOfDeparture() == null) {
                 report.setValid(false);
                 report.addMessage(FlightConstant.PLACE_OF_DEPARTURE, "place of departure is blank");
             }
-            if (flight.getPlaceOfArrival().isBlank()) {
+            if (flight.getPlaceOfArrival().isBlank() || flight.getPlaceOfDeparture() == null) {
                 report.setValid(false);
                 report.addMessage(FlightConstant.PLACE_OF_ARRIVAL, "place of arrival is blank");
             }
