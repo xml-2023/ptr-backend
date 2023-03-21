@@ -114,9 +114,8 @@ public class CreateFlightValidatorTest {
     }
 
     @Test
-    void validate_NumberOfPassengersIsGreaterThanCapacity_False() {
-        flight.setPlaneCapacity(TestConstant.TEST_NUMBER_PASSENGERS);
-        flight.setNumberOfPassengers(TestConstant.TEST_PLANE_CAPACITY);
+    void validate_PlaneCapacityIsNegative_False() {
+        flight.setPlaneCapacity(-5);
 
         ValidationReport report = validator.validate(flight);
 

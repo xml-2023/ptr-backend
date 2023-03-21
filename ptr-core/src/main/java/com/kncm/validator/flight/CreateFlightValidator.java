@@ -54,9 +54,9 @@ public class CreateFlightValidator implements Validator<Flight> {
             if (flight.getPlaneCapacity() == null) {
                 report.setValid(false);
                 report.addMessage(FlightConstant.PLANE_CAPACITY, "plane capacity is null");
-            } else if (flight.getPlaneCapacity() < flight.getNumberOfPassengers()) {
+            } else if (flight.getPlaneCapacity() < 0) {
                 report.setValid(false);
-                report.addMessage(FlightConstant.NUMBER_OF_PASSENGERS, "number of passengers is greater than plane capacity");
+                report.addMessage(FlightConstant.PLANE_CAPACITY, "plane capacity cannot be negative number");
             }
         }
         return report;
