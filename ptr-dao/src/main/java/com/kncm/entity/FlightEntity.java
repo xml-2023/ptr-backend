@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -19,6 +20,8 @@ import java.util.ArrayList;
 @AllArgsConstructor
 @Document("flights")
 public class FlightEntity {
+    @Transient
+    public static final String SEQUENCE_NAME="flight_sequence";
     @Id
     private Long id;
     private LocalDate date;
