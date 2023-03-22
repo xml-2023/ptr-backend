@@ -8,4 +8,6 @@ public interface RoleStore {
     Role find(Long id);
 
     boolean exists(String name);
+
+    Role find(String name);
 }

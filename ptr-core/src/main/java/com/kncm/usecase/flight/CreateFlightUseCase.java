@@ -17,12 +17,12 @@ public class CreateFlightUseCase {
     private final TicketStore ticketStore;
     private final CreateFlightValidator validator;
 
-    public Response create(Flight flight, double ticketPrice){
+    public Response create(Flight flight, double ticketPrice) {
         ValidationReport report = validator.validate(flight);
         Flight createdFlight = new Flight();
         //create ticket list
         ArrayList<Ticket> createdTickets = new ArrayList<>();
-        for(int i = 1; i <= flight.getPlaneCapacity(); ++i){
+        for (int i = 1; i <= flight.getPlaneCapacity(); ++i) {
             Ticket ticket = new Ticket();
             //ticket.setId(Integer.toUnsignedLong(i));
             ticket.setSeat(Integer.toString(i));

@@ -17,7 +17,7 @@ import static org.springframework.data.mongodb.core.FindAndModifyOptions.options
 public class SequenceGenerator {
     private final MongoOperations mongoOperations;
 
-    public Long getSequenceNumber(String sequenceName){
+    public Long getSequenceNumber(String sequenceName) {
         Query query = new Query(Criteria.where("id").is(sequenceName));
         Update update = new Update().inc("seq", 1);
         DbSequence counter = mongoOperations

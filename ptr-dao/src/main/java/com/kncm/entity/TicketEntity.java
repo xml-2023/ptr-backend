@@ -16,7 +16,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document("tickets")
 public class TicketEntity {
     @Transient
-    public static final String SEQUENCE_NAME="ticket_sequence";
+    public static final String SEQUENCE_NAME = "ticket_sequence";
     @Id
     private Long id;
     private String seat;

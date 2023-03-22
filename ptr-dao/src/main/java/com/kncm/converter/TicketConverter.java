@@ -6,7 +6,7 @@ import com.kncm.model.Ticket;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TicketConverter implements GenericConverter<Ticket, TicketEntity>{
+public class TicketConverter implements GenericConverter<Ticket, TicketEntity> {
     @Override
     public Ticket toModel(TicketEntity ticketEntity) {
         Ticket ticket = new Ticket();
@@ -21,7 +21,7 @@ public class TicketConverter implements GenericConverter<Ticket, TicketEntity>{
     @Override
     public List<Ticket> toModel(List<TicketEntity> ticketEntities) {
         List<Ticket> tickets = new ArrayList<>();
-        for(TicketEntity ticketEntity : ticketEntities){
+        for (TicketEntity ticketEntity : ticketEntities) {
             Ticket ticket = new Ticket();
             ticket.setId(ticketEntity.getId());
             ticket.setBooked(ticketEntity.isBooked());
@@ -47,7 +47,7 @@ public class TicketConverter implements GenericConverter<Ticket, TicketEntity>{
     @Override
     public List<TicketEntity> toEntity(List<Ticket> tickets) {
         List<TicketEntity> entities = new ArrayList<>();
-        for(Ticket ticket : tickets){
+        for (Ticket ticket : tickets) {
             TicketEntity entity = new TicketEntity();
             entity.setId(ticket.getId());
             entity.setBooked(ticket.isBooked());

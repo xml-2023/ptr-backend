@@ -1,10 +1,10 @@
 package com.kncm.validator.ticket;
 
-import com.kncm.constant.FlightConstant;
 import com.kncm.constant.TicketConstant;
 import com.kncm.model.Ticket;
 import com.kncm.validator.ValidationReport;
 import com.kncm.validator.Validator;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.HashMap;
 
@@ -16,7 +16,7 @@ public class CreateTicketValidator implements Validator<Ticket> {
             report.setValid(false);
             report.addMessage(TicketConstant.TICKET, "ticket is null");
         } else {
-            if (ticket.getSeat().isBlank()  || ticket.getSeat() == null) {
+            if (StringUtils.isBlank(ticket.getSeat())) {
                 report.setValid(false);
                 report.addMessage(TicketConstant.SEAT, "seat is blank");
             }
