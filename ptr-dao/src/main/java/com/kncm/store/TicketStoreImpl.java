@@ -8,7 +8,7 @@ import com.kncm.repository.TicketRepository;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class TicketStoreImpl implements TicketStore{
+public class TicketStoreImpl implements TicketStore {
     private final TicketRepository repository;
     private final TicketConverter converter;
     private final SequenceGenerator generator;
@@ -20,8 +20,12 @@ public class TicketStoreImpl implements TicketStore{
     }
 
     @Override
-    public Ticket find(Long id) { return converter.toModel(repository.findOne(id)); }
+    public Ticket find(Long id) {
+        return converter.toModel(repository.findOne(id));
+    }
 
     @Override
-    public void delete(Ticket ticket) { repository.deleteById(ticket.getId()); }
+    public void delete(Ticket ticket) {
+        repository.deleteById(ticket.getId());
+    }
 }

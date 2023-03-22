@@ -22,22 +22,22 @@ public class CreateUserValidator implements Validator<User> {
             report.setValid(false);
             report.addMessage(UserConstant.USER, "user is null");
         } else {
-            if (user.getName().isBlank()) {
+            if (user.getName() == null || user.getName().isBlank()) {
                 report.setValid(false);
                 report.addMessage(UserConstant.NAME, "name is blank");
             }
-            if (user.getSurname().isBlank()) {
+            if (user.getSurname() == null || user.getSurname().isBlank()) {
                 report.setValid(false);
                 report.addMessage(UserConstant.SURNAME, "surname is blank");
             }
-            if (user.getEmail().isBlank()) {
+            if (user.getEmail() == null || user.getEmail().isBlank()) {
                 report.setValid(false);
                 report.addMessage(UserConstant.EMAIL, "email is blank");
             } else if (store.exists(user.getEmail())) {
                 report.setValid(false);
                 report.addMessage(UserConstant.EMAIL, "user with this email address is already registered");
             }
-            if (user.getPassword().isBlank()) {
+            if (user.getPassword() == null || user.getPassword().isBlank()) {
                 report.setValid(false);
                 report.addMessage(UserConstant.PASSWORD, "password is blank");
             }

@@ -1,6 +1,5 @@
 package com.kncm.validator.ticket;
 
-import com.kncm.constant.FlightConstant;
 import com.kncm.constant.TicketConstant;
 import com.kncm.model.Ticket;
 import com.kncm.validator.ValidationReport;
@@ -16,7 +15,7 @@ public class CreateTicketValidator implements Validator<Ticket> {
             report.setValid(false);
             report.addMessage(TicketConstant.TICKET, "ticket is null");
         } else {
-            if (ticket.getSeat().isBlank()  || ticket.getSeat() == null) {
+            if (ticket.getSeat().isBlank() || ticket.getSeat() == null) {
                 report.setValid(false);
                 report.addMessage(TicketConstant.SEAT, "seat is blank");
             }

@@ -1,6 +1,8 @@
 package com.kncm.controller;
 
+import com.kncm.SequenceGenerator;
 import com.kncm.dto.Response;
+import com.kncm.entity.RoleEntity;
 import com.kncm.model.Role;
 import com.kncm.usecase.role.CreateRoleUseCase;
 import lombok.AllArgsConstructor;
@@ -18,9 +20,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/roles")
 public class RoleController {
     private final CreateRoleUseCase createRoleUseCase;
+    private final SequenceGenerator generator;
 
     @PostMapping
     public Response create(@RequestBody Role role) {
+        role.setId(generator.getSequenceNumber(RoleEntity.SEQUENCE_NAME));
         return createRoleUseCase.create(role);
     }
 }

@@ -16,19 +16,25 @@ import java.util.Collection;
 import java.util.List;
 
 @AllArgsConstructor
-public class FlightStoreImpl implements FlightStore{
+public class FlightStoreImpl implements FlightStore {
     private final FlightRepository repository;
     private final FlightConverter converter;
     private final MongoTemplate mongoTemplate;
 
     @Override
-    public Collection<Flight> findAll(){return converter.toModel(repository.findAll());}
+    public Collection<Flight> findAll() {
+        return converter.toModel(repository.findAll());
+    }
 
     @Override
-    public Flight save(Flight flight) { return converter.toModel(repository.save(converter.toEntity(flight))); }
+    public Flight save(Flight flight) {
+        return converter.toModel(repository.save(converter.toEntity(flight)));
+    }
 
     @Override
-    public Flight find(Long id) { return converter.toModel(repository.findOne(id)); }
+    public Flight find(Long id) {
+        return converter.toModel(repository.findOne(id));
+    }
 
     @Override
     public boolean exists(Long id) {
@@ -50,10 +56,10 @@ public class FlightStoreImpl implements FlightStore{
             criteria.add(Criteria.where("date").is(flightDate));
         if (numberOfPassengers != null && numberOfPassengers > 0) {
             criteria.add(Criteria.where("$expr")
-              .gte(Arrays.asList(
-                      new BasicDBObject("$subtract", Arrays.asList("$planeCapacity", "$numberOfPassengers")),
-                      numberOfPassengers
-              ))
+                    .gte(Arrays.asList(
+                            new BasicDBObject("$subtract", Arrays.asList("$planeCapacity", "$numberOfPassengers")),
+                            numberOfPassengers
+                    ))
             );
         }
         if (criteria.size() == 4) {
@@ -65,5 +71,8 @@ public class FlightStoreImpl implements FlightStore{
     }
 
     @Override
-    public void delete(Flight flight) { repository.delete(converter.toEntity(flight)); }
+    public void delete(Flight flight) {
+        repository.delete(converter.toEntity(flight));
+    }
+
 }

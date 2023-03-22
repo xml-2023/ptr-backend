@@ -19,7 +19,7 @@ public class CreateRoleValidator implements Validator<Role> {
         if (role == null) {
             report.setValid(false);
             report.addMessage(RoleConstant.ROLE, "role is null");
-        } else if (role.getName().isBlank()) {
+        } else if (role.getName() == null || role.getName().isBlank()) {
             report.setValid(false);
             report.addMessage(RoleConstant.NAME, "role must have name");
         } else if (store.exists(role.getName())) {

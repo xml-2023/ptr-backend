@@ -23,7 +23,7 @@ public class FlightDTO {
     private Integer planeCapacity;
     private double ticketPriceInEuros;
 
-    public Flight map(FlightDTO dto){
+    public Flight map(FlightDTO dto) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         Flight flight = new Flight();
         flight.setDate(LocalDate.parse(dto.getDate()));

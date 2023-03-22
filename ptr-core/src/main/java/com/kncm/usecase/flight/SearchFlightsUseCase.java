@@ -13,7 +13,7 @@ import java.util.HashMap;
 public class SearchFlightsUseCase {
     private final FlightStore flightStore;
 
-    public Response searchFlights(String date, String placeOfDeparture, String placeOfArrival, Integer numberOfPassengers){
+    public Response searchFlights(String date, String placeOfDeparture, String placeOfArrival, Integer numberOfPassengers) {
         Response response;
         ValidationReport report = new ValidationReport(true, new HashMap<>());
         Collection<Flight> flights = flightStore.search(date, placeOfDeparture, placeOfArrival, numberOfPassengers);

@@ -4,4 +4,6 @@ import com.kncm.entity.RoleEntity;
 
 public interface RoleRepository extends EntityRepository<RoleEntity> {
     boolean existsByName(String name);
+
+    RoleEntity findByName(String name);
 }

@@ -16,13 +16,13 @@ public class DeleteFlightUseCase {
     private final TicketStore ticketStore;
     private final FindFlightValidator validator;
 
-    public Response delete(Long id){
+    public Response delete(Long id) {
         Response response;
         ValidationReport report = validator.validate(id);
-        if(report.isValid()){
+        if (report.isValid()) {
             Flight flight = flightStore.find(id);
             response = new Response(report, flight);
-            for(Ticket ticket : flight.getTickets()){
+            for (Ticket ticket : flight.getTickets()) {
                 ticketStore.delete(ticket);
             }
             flightStore.delete(flight);

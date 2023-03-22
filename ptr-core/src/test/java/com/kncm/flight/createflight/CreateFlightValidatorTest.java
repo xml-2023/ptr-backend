@@ -1,7 +1,6 @@
 package com.kncm.flight.createflight;
 
 import com.kncm.constant.Constant;
-import com.kncm.constant.TestConstant;
 import com.kncm.flight.FlightBuilder;
 import com.kncm.model.Flight;
 import com.kncm.validator.ValidationReport;

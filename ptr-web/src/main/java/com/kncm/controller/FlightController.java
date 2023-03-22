@@ -5,14 +5,11 @@ import com.kncm.dto.Response;
 import com.kncm.dto.flight.FlightDTO;
 import com.kncm.entity.FlightEntity;
 import com.kncm.model.Flight;
-import com.kncm.store.FlightStore;
 import com.kncm.usecase.flight.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Collection;
 
 @Getter
 @Setter
@@ -28,7 +25,7 @@ public class FlightController {
     private final SequenceGenerator generator;
 
     @GetMapping(value = "/findAll")
-    public Response findAll(){
+    public Response findAll() {
         return findAllUseCase.findAll();
     }
 
@@ -40,7 +37,7 @@ public class FlightController {
     }
 
     @GetMapping(value = "/findBy/{id}")
-    public Response findOne(@PathVariable("id") Long id){
+    public Response findOne(@PathVariable("id") Long id) {
         return findFlightUseCase.findFlight(id);
     }
 
@@ -49,12 +46,12 @@ public class FlightController {
             @RequestParam String date,
             @RequestParam String placeOfDeparture,
             @RequestParam String placeOfArrival,
-            @RequestParam Integer numberOfPassengers){
+            @RequestParam Integer numberOfPassengers) {
         return searchFlightsUseCase.searchFlights(date, placeOfDeparture, placeOfArrival, numberOfPassengers);
     }
 
     @DeleteMapping(value = "/{id}")
-    public Response delete(@PathVariable("id") Long id){
+    public Response delete(@PathVariable("id") Long id) {
         return deleteFlightUseCase.delete(id);
     }
 }

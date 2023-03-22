@@ -12,10 +12,10 @@ public class FindFlightUseCase {
     private final FlightStore flightStore;
     private final FindFlightValidator validator;
 
-    public Response findFlight(Long id){
+    public Response findFlight(Long id) {
         Response response;
         ValidationReport report = validator.validate(id);
-        if(report.isValid()){
+        if (report.isValid()) {
             Flight flight = flightStore.find(id);
             response = new Response(report, flight);
         } else {

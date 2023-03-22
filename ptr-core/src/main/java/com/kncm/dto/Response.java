@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Getter
@@ -19,6 +20,16 @@ public class Response {
         payload = new HashMap<>();
         if (isValid()) {
             payload.put(getObjectClassType(object), object);
+        }
+    }
+
+    public Response(ValidationReport report, List<Object> objects) {
+        this.report = report;
+        payload = new HashMap<>();
+        if (isValid()) {
+            for (Object object : objects) {
+                payload.put(getObjectClassType(object), object);
+            }
         }
     }
 

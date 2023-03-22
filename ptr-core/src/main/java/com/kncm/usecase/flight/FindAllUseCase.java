@@ -13,7 +13,7 @@ import java.util.HashMap;
 public class FindAllUseCase {
     private final FlightStore flightStore;
 
-    public Response findAll(){
+    public Response findAll() {
         Response response;
         ValidationReport report = new ValidationReport(true, new HashMap<>());
         Collection<Flight> flights = flightStore.findAll();

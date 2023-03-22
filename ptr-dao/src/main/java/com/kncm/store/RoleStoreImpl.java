@@ -24,4 +24,9 @@ public class RoleStoreImpl implements RoleStore {
     public boolean exists(String name) {
         return repository.existsByName(name);
     }
+
+    @Override
+    public Role find(String name) {
+        return converter.toModel(repository.findByName(name));
+    }
 }
