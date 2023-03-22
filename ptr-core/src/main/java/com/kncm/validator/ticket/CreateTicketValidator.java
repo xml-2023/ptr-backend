@@ -16,7 +16,7 @@ public class CreateTicketValidator implements Validator<Ticket> {
             report.setValid(false);
             report.addMessage(TicketConstant.TICKET, "ticket is null");
         } else {
-            if (ticket.getSeat().isBlank()) {
+            if (ticket.getSeat().isBlank()  || ticket.getSeat() == null) {
                 report.setValid(false);
                 report.addMessage(TicketConstant.SEAT, "seat is blank");
             }
