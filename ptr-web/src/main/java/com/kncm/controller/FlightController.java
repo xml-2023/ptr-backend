@@ -36,12 +36,12 @@ public class FlightController {
         return createFlightUseCase.create(flight, dto.getTicketPriceInEuros());
     }
 
-    @GetMapping(value = "/findBy/{id}")
-    public Response findOne(@PathVariable("id") Long id) {
+    @GetMapping("/find/{id}")
+    public Response find(@PathVariable("id") Long id) {
         return findFlightUseCase.findFlight(id);
     }
 
-    @GetMapping(value = "/search")
+    @GetMapping("/search")
     public Response search(
             @RequestParam String date,
             @RequestParam String placeOfDeparture,
@@ -50,7 +50,7 @@ public class FlightController {
         return searchFlightsUseCase.searchFlights(date, placeOfDeparture, placeOfArrival, numberOfPassengers);
     }
 
-    @DeleteMapping(value = "/{id}")
+    @DeleteMapping("/{id}")
     public Response delete(@PathVariable("id") Long id) {
         return deleteFlightUseCase.delete(id);
     }
