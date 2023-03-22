@@ -7,6 +7,7 @@ import com.kncm.store.UserStore;
 import com.kncm.validator.ValidationReport;
 import com.kncm.validator.Validator;
 import lombok.AllArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.HashMap;
 
@@ -22,22 +23,22 @@ public class CreateUserValidator implements Validator<User> {
             report.setValid(false);
             report.addMessage(UserConstant.USER, "user is null");
         } else {
-            if (user.getName() == null || user.getName().isBlank()) {
+            if (StringUtils.isBlank(user.getName())) {
                 report.setValid(false);
                 report.addMessage(UserConstant.NAME, "name is blank");
             }
-            if (user.getSurname() == null || user.getSurname().isBlank()) {
+            if (StringUtils.isBlank(user.getSurname())) {
                 report.setValid(false);
                 report.addMessage(UserConstant.SURNAME, "surname is blank");
             }
-            if (user.getEmail() == null || user.getEmail().isBlank()) {
+            if (StringUtils.isBlank(user.getEmail())) {
                 report.setValid(false);
                 report.addMessage(UserConstant.EMAIL, "email is blank");
             } else if (store.exists(user.getEmail())) {
                 report.setValid(false);
                 report.addMessage(UserConstant.EMAIL, "user with this email address is already registered");
             }
-            if (user.getPassword() == null || user.getPassword().isBlank()) {
+            if (StringUtils.isBlank(user.getPassword())) {
                 report.setValid(false);
                 report.addMessage(UserConstant.PASSWORD, "password is blank");
             }

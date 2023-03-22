@@ -6,6 +6,7 @@ import com.kncm.model.Flight;
 import com.kncm.validator.ValidationReport;
 import com.kncm.validator.Validator;
 import lombok.AllArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -43,11 +44,11 @@ public class CreateFlightValidator implements Validator<Flight> {
                 report.setValid(false);
                 report.addMessage(FlightConstant.INVALID_TIME, "time of arrival is before time of departure");
             }
-            if (flight.getPlaceOfDeparture().isBlank() || flight.getPlaceOfDeparture() == null) {
+            if (StringUtils.isBlank(flight.getPlaceOfDeparture())) {
                 report.setValid(false);
                 report.addMessage(FlightConstant.PLACE_OF_DEPARTURE, "place of departure is blank");
             }
-            if (flight.getPlaceOfArrival().isBlank() || flight.getPlaceOfDeparture() == null) {
+            if (StringUtils.isBlank(flight.getPlaceOfArrival())) {
                 report.setValid(false);
                 report.addMessage(FlightConstant.PLACE_OF_ARRIVAL, "place of arrival is blank");
             }
@@ -59,6 +60,7 @@ public class CreateFlightValidator implements Validator<Flight> {
                 report.addMessage(FlightConstant.PLANE_CAPACITY, "plane capacity cannot be negative number");
             }
         }
+
         return report;
     }
 }
