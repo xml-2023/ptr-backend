@@ -5,6 +5,7 @@ import com.kncm.model.Flight;
 import java.util.Collection;
 
 public interface FlightStore {
+    Collection<Flight> findAll();
     Flight save(Flight flight);
     Flight find(Long id);
     boolean exists(Long id);

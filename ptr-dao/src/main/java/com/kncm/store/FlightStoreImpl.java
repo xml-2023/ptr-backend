@@ -22,6 +22,9 @@ public class FlightStoreImpl implements FlightStore{
     private final MongoTemplate mongoTemplate;
 
     @Override
+    public Collection<Flight> findAll(){return converter.toModel(repository.findAll());}
+
+    @Override
     public Flight save(Flight flight) { return converter.toModel(repository.save(converter.toEntity(flight))); }
 
     @Override

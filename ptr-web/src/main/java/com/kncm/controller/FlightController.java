@@ -6,14 +6,10 @@ import com.kncm.dto.flight.FlightDTO;
 import com.kncm.entity.FlightEntity;
 import com.kncm.model.Flight;
 import com.kncm.store.FlightStore;
-import com.kncm.usecase.flight.CreateFlightUseCase;
-import com.kncm.usecase.flight.DeleteFlightUseCase;
-import com.kncm.usecase.flight.FindFlightUseCase;
+import com.kncm.usecase.flight.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -27,8 +23,14 @@ public class FlightController {
     private final CreateFlightUseCase createFlightUseCase;
     private final DeleteFlightUseCase deleteFlightUseCase;
     private final FindFlightUseCase findFlightUseCase;
+    private final FindAllUseCase findAllUseCase;
+    private final SearchFlightsUseCase searchFlightsUseCase;
     private final SequenceGenerator generator;
-    private final FlightStore flightStore;
+
+    @GetMapping(value = "/findAll")
+    public Response findAll(){
+        return findAllUseCase.findAll();
+    }
 
     @PostMapping
     public Response create(@RequestBody FlightDTO dto) {
@@ -43,12 +45,12 @@ public class FlightController {
     }
 
     @GetMapping(value = "/search")
-    public Collection<Flight> search(
+    public Response search(
             @RequestParam String date,
             @RequestParam String placeOfDeparture,
             @RequestParam String placeOfArrival,
             @RequestParam Integer numberOfPassengers){
-        return flightStore.search(date, placeOfDeparture, placeOfArrival, numberOfPassengers);
+        return searchFlightsUseCase.searchFlights(date, placeOfDeparture, placeOfArrival, numberOfPassengers);
     }
 
     @DeleteMapping(value = "/{id}")
