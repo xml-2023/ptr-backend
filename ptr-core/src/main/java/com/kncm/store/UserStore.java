@@ -8,4 +8,6 @@ public interface UserStore {
     User find(Long id);
 
     boolean exists(String email);
+
+    User find(String username);
 }
