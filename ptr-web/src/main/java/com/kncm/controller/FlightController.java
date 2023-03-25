@@ -38,7 +38,7 @@ public class FlightController {
 
     @GetMapping("/find/{id}")
     public Response find(@PathVariable("id") Long id) {
-        return findFlightUseCase.findFlight(id);
+        return findFlightUseCase.find(id);
     }
 
     @GetMapping("/search")

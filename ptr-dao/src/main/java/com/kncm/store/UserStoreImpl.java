@@ -24,4 +24,9 @@ public class UserStoreImpl implements UserStore {
     public boolean exists(String email) {
         return repository.existsByEmail(email);
     }
+
+    @Override
+    public User find(String email) {
+        return converter.toModel(repository.findByEmail(email));
+    }
 }

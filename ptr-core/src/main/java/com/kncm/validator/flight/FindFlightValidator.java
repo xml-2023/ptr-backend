@@ -19,6 +19,7 @@ public class FindFlightValidator implements ReadValidator<Long> {
             report.setValid(false);
             report.addMessage(FlightConstant.FLIGHT, "flight with passed id does not exist");
         }
+
         return report;
     }
 }

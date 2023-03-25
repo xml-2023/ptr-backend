@@ -13,15 +13,18 @@ public class UserConverter implements GenericConverter<User, UserEntity> {
 
     @Override
     public User toModel(UserEntity userEntity) {
-        User user = new User();
-        user.setId(userEntity.getId());
-        user.setName(userEntity.getName());
-        user.setSurname(userEntity.getSurname());
-        user.setEmail(userEntity.getEmail());
-        user.setPassword(userEntity.getPassword());
-        user.setRole(roleConverter.toModel(userEntity.getRole()));
+        if (userEntity != null) {
+            User user = new User();
+            user.setId(userEntity.getId());
+            user.setName(userEntity.getName());
+            user.setSurname(userEntity.getSurname());
+            user.setEmail(userEntity.getEmail());
+            user.setPassword(userEntity.getPassword());
+            user.setRole(roleConverter.toModel(userEntity.getRole()));
 
-        return user;
+            return user;
+        } else
+            return null;
     }
 
     @Override

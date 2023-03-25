@@ -5,14 +5,13 @@ import com.kncm.dto.Response;
 import com.kncm.entity.UserEntity;
 import com.kncm.model.User;
 import com.kncm.usecase.user.CreateUserUseCase;
+import com.kncm.usecase.user.FindUserByEmailUseCase;
 import com.kncm.usecase.user.RegisterUserUseCase;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.*;
 
 @Getter
 @Setter
@@ -22,7 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     private final CreateUserUseCase createUserUseCase;
     private final RegisterUserUseCase registerUserUseCase;
+    private final FindUserByEmailUseCase findUserByEmailUseCase;
     private final SequenceGenerator generator;
+    private final PasswordEncoder passwordEncoder;
 
     @PostMapping
     public Response create(@RequestBody User user) {
@@ -33,6 +34,12 @@ public class UserController {
     @PostMapping("register")
     public Response register(@RequestBody User user) {
         user.setId(generator.getSequenceNumber(UserEntity.SEQUENCE_NAME));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return registerUserUseCase.register(user);
+    }
+
+    @PostMapping("find/{email}")
+    public Response user(@PathVariable String email) {
+        return findUserByEmailUseCase.find(email);
     }
 }
