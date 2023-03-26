@@ -38,7 +38,7 @@ public class UserController {
         return registerUserUseCase.register(user);
     }
 
-    @PostMapping("find/{email}")
+    @GetMapping("find/{email}")
     public Response user(@PathVariable String email) {
         return findUserByEmailUseCase.find(email);
     }

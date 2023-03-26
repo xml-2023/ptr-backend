@@ -70,7 +70,8 @@ public class WebSecurityConfig {
         http.authorizeHttpRequests().requestMatchers("/auth/**").permitAll()
                 .requestMatchers("/users/register").permitAll()
                 .requestMatchers("/users/create").permitAll()
-                .requestMatchers("/users/find/**").hasAuthority("REGISTERED_USER")
+                .requestMatchers("/flights/**").permitAll()
+                .requestMatchers("/users/find").hasAuthority("REGISTERED_USER")
                 .requestMatchers(HttpMethod.POST, "/roles").hasAuthority("REGISTERED_USER")
                 .anyRequest().authenticated().and()
                 .cors().and()
@@ -79,13 +80,5 @@ public class WebSecurityConfig {
         http.authenticationProvider(authenticationProvider());
 
         return http.build();
-    }
-
-    @Bean
-    public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().requestMatchers(HttpMethod.POST, "/auth/login")
-                .requestMatchers(HttpMethod.GET, "/", "/webjars/**", "/*.html", "favicon.ico",
-                        "/**/*.html", "/**/*.css", "/**/*.js");
-
     }
 }
