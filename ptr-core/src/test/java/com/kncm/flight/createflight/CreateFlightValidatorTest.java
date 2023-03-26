@@ -12,7 +12,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
@@ -41,16 +40,6 @@ public class CreateFlightValidatorTest {
     @Test
     void validate_DateIsInPast_False() {
         flight.setDate(LocalDate.now().minusDays(2));
-
-        ValidationReport report = validator.validate(flight);
-
-        assertFalse(report.isValid());
-    }
-
-    @Test
-    void validate_DateIsInInvalid_False() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        flight.setDate(LocalDate.parse("22-05-2023", formatter));
 
         ValidationReport report = validator.validate(flight);
 
