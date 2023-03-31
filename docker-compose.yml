@@ -1,0 +1,9 @@
+services:
+  ptr:
+    image: openjdk:17-jdk-alpine
+    container_name: ptr
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./ptr-web/target:/app
+    command: ["java", "-jar", "/app/ptr-web-0.0.1-SNAPSHOT.jar"]

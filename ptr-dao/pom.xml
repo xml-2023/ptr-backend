@@ -11,6 +11,8 @@
 
     <artifactId>ptr-dao</artifactId>
 
+    <packaging>jar</packaging>
+
     <dependencies>
         <dependency>
             <groupId>com.kncm</groupId>
