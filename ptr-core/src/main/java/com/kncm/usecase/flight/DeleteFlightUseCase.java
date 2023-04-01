@@ -29,6 +29,7 @@ public class DeleteFlightUseCase {
         } else {
             response = new Response(report, id);
         }
+
         return response;
     }
 }

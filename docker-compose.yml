@@ -6,4 +6,4 @@ services:
       - "8080:8080"
     volumes:
       - ./ptr-web/target:/app
-    command: ["java", "-jar", "/app/ptr-web-0.0.1-SNAPSHOT.jar"]
+    command: [ "java", "-jar", "/app/ptr-web-0.0.1-SNAPSHOT.jar" ]

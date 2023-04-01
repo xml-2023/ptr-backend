@@ -24,7 +24,6 @@ public class CreateFlightUseCase {
         ArrayList<Ticket> createdTickets = new ArrayList<>();
         for (int i = 1; i <= flight.getPlaneCapacity(); ++i) {
             Ticket ticket = new Ticket();
-            //ticket.setId(Integer.toUnsignedLong(i));
             ticket.setSeat(Integer.toString(i));
             ticket.setBooked(false);
             ticket.setPrice(ticketPrice);

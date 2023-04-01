@@ -1,5 +1,6 @@
 package com.kncm.usecase.user;
 
+import com.kncm.constant.RoleConstant;
 import com.kncm.dto.Response;
 import com.kncm.model.User;
 import com.kncm.store.RoleStore;
@@ -15,7 +16,7 @@ public class RegisterUserUseCase {
     private final CreateUserValidator validator;
 
     public Response register(User user) {
-        user.setRole(roleStore.find("REGISTERED_USER"));
+        user.setRole(roleStore.find(RoleConstant.REGISTERED_USER));
         ValidationReport report = validator.validate(user);
         User createdUser = new User();
         if (report.isValid()) {
