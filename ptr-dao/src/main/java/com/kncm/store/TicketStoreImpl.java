@@ -28,4 +28,16 @@ public class TicketStoreImpl implements TicketStore {
     public void delete(Ticket ticket) {
         repository.deleteById(ticket.getId());
     }
+
+    @Override
+    public boolean exists(Long ticketId) {
+        return repository.existsById(ticketId);
+    }
+
+    @Override
+    public Ticket update(Ticket ticket) {
+        return converter.toModel(repository.save(converter.toEntity(ticket)));
+    }
+
+
 }

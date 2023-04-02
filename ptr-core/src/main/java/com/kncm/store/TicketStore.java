@@ -9,4 +9,8 @@ public interface TicketStore {
 
     void delete(Ticket ticket);
 
+    boolean exists(Long ticketId);
+
+    Ticket update(Ticket ticket);
+
 }

@@ -75,4 +75,9 @@ public class FlightStoreImpl implements FlightStore {
         repository.delete(converter.toEntity(flight));
     }
 
+    @Override
+    public Flight findByTicketId(Long ticketId) {
+        return converter.toModel(repository.findByTicketsId(ticketId));
+    }
+
 }

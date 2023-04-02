@@ -25,6 +25,7 @@ public class CreateTicketValidator implements Validator<Ticket> {
                 report.addMessage(TicketConstant.PRICE, "price cannot be lower than 0");
             }
         }
+
         return report;
     }
 }
