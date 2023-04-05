@@ -2,7 +2,12 @@ package com.kncm.store;
 
 import com.kncm.model.Ticket;
 
+import java.util.Collection;
+
 public interface TicketStore {
+
+    Collection<Ticket> findAll();
+
     Ticket save(Ticket ticket);
 
     Ticket find(Long id);

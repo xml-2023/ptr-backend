@@ -7,11 +7,18 @@ import com.kncm.model.Ticket;
 import com.kncm.repository.TicketRepository;
 import lombok.AllArgsConstructor;
 
+import java.util.Collection;
+
 @AllArgsConstructor
 public class TicketStoreImpl implements TicketStore {
     private final TicketRepository repository;
     private final TicketConverter converter;
     private final SequenceGenerator generator;
+
+    @Override
+    public Collection<Ticket> findAll() {
+        return converter.toModel(repository.findAll());
+    }
 
     @Override
     public Ticket save(Ticket ticket) {

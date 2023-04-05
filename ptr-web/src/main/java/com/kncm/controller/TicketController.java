@@ -22,6 +22,6 @@ public class TicketController {
 
     @PutMapping("/buy")
     public Response buy(@RequestBody TicketDTO dto) {
-        return buyTicketUseCase.buy(dto.getUserId(), dto.getTicketId());
+        return buyTicketUseCase.buy(dto.getUserId(), dto.getTicketId(), dto.getFlightId());
     }
 }
