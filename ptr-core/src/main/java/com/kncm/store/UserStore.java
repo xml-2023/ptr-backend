@@ -10,4 +10,6 @@ public interface UserStore {
     boolean exists(String email);
 
     User find(String username);
+
+    boolean exists(Long id);
 }

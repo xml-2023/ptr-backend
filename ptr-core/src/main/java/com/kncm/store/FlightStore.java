@@ -16,4 +16,6 @@ public interface FlightStore {
     Collection<Flight> search(String date, String placeOfDeparture, String placeOfArrival, Integer numberOfPassengers);
 
     void delete(Flight flight);
+
+    Flight findByTicketId(Long ticketId);
 }
